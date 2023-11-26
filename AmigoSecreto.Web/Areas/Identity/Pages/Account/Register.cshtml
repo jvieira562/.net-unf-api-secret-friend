@@ -11,8 +11,8 @@
 <section class="form-nova-conta">
     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
         <h1>@ViewData["Title"]</h1>
-        <p class="messagem-bem-vindo">🎉 Seja bem-vindo à nossa plataforma de Amigo Secreto! 🎄 Registre-se para participar dessa celebração única. Conecte-se com amigos, compartilhe a alegria das festas e descubra quem será seu parceiro secreto. Juntos, vamos criar momentos especiais! ✨</p>
-        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <p class="">🎉 Seja bem-vindo à nossa plataforma de Amigo Secreto! 🎄 Registre-se para participar dessa celebração única. Conecte-se com amigos, compartilhe a alegria das festas e descubra quem será seu parceiro secreto. Juntos, vamos criar momentos especiais! ✨</p>
+        <div asp-validation-summessagem-bem-vindomary="ModelOnly" class="text-danger" role="alert"></div>
         <div class="form-floating mb-3">
             <label asp-for="Input.Email">Email</label>
             <input asp-for="Input.Email" class="" autocomplete="username" aria-required="true"
