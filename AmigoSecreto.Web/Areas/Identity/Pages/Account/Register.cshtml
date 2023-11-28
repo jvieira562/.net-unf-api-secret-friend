@@ -14,12 +14,34 @@
         <p class="">🎉 Seja bem-vindo à nossa plataforma de Amigo Secreto! 🎄 Registre-se para participar dessa celebração única. Conecte-se com amigos, compartilhe a alegria das festas e descubra quem será seu parceiro secreto. Juntos, vamos criar momentos especiais! ✨</p>
         <div asp-validation-summessagem-bem-vindomary="ModelOnly" class="text-danger" role="alert"></div>
         <div class="form-floating mb-3">
+            <label>Nome completo</label>
+            <input class="" autocomplete="username" aria-required="true"
+                placeholder="Nome Completo" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
             <label asp-for="Input.Email">Email</label>
             <input asp-for="Input.Email" class="" autocomplete="username" aria-required="true"
                 placeholder="exemplo@gmail.com" />
             <span asp-validation-for="Input.Email" class="text-danger"></span>
         </div>
-
+        <div class="redesocial">
+            <div class="select-rede">
+                <label asp-for="Input.RedeSocial">Rede</label>
+                <select id="redesSociais" asp-for="Input.RedeSocial">
+                    <option value="linkedin">Linkedin</option>
+                    <option value="github">GitHub</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="Facebook">Facebook</option>
+                </select>
+            </div>
+            <div class="url-rede">
+                <label asp-for="Input.RedeSocialUrlPath">Url do perfil</label>
+                <input class="" asp-for="Input.RedeSocialUrlPath" aria-required="true"
+                    placeholder="https://linkedin.com/in/josevictorvieira" />
+                <span class="text-danger"></span>
+            </div>
+        </div>
         <div class="box-senhas">
             <div class="senha">
                 <label asp-for="Input.Password">Password</label>

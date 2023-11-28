@@ -7,6 +7,7 @@
 }
 @section Styles {
     <link rel="stylesheet" href="/css/base.css" asp-append-version="true">
+    <link rel="stylesheet" href="/css/manageNav.css" asp-append-version="true">
 }
 <partial name="_ManageNav" for="StatusMessage" />
 <partial name="_StatusMessage" for="StatusMessage" />
@@ -14,8 +15,7 @@
     main {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+
     }
     #profile-form {
         display: flex;
@@ -24,7 +24,7 @@
     }
 </style>
 <form id="profile-form" method="post">
-    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Title"]</h3>
     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
     <div class="">
         <label asp-for="Username" class="form-label">Email</label>

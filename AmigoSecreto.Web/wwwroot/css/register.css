@@ -26,7 +26,7 @@ html {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 400px;
+    max-width: 400px;
 }
 .messagem-bem-vindo {
     text-align: center;
@@ -56,4 +56,26 @@ input:focus {
 .btn-registrar {
     width: 100%;
     align-self: center;
+}
+.redesocial {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.select-rede {
+    display: flex;
+    flex-direction: column;
+}
+.select-rede select {
+    padding: 0.3rem 0 0.3rem 0;
+    border-radius: 5px;
+    font-size: 14px;
+    height: 26.59px;
+    border: 1px solid var(--action-color);
+}
+.select-rede select::placeholder {
+    font-size: 14px;
 }

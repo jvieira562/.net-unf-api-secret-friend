@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Drawing;
 
 namespace AmigoSecreto.Web.Areas.Identity.Pages.Account
 {
@@ -98,6 +99,12 @@ namespace AmigoSecreto.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirmar senha")]
             [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não coincidem.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "Rede social")]
+            public RedesSociais RedeSocial { get; set; }
+            [Display(Name = "Link do perfil")]
+            public string RedeSocialUrlPath { get; set; }
+            
         }
 
 
@@ -114,8 +121,8 @@ namespace AmigoSecreto.Web.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                user.RedeSocial = Input.RedeSocial;
+                user.RedeSocialUrlPath = Input.RedeSocialUrlPath;
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -126,14 +133,15 @@ namespace AmigoSecreto.Web.Areas.Identity.Pages.Account
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirme seu email",
+                        $"Por favor, confirme sua conta em <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicando aqui</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
