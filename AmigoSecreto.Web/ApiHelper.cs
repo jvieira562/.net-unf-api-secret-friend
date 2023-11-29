@@ -17,15 +17,15 @@ namespace AmigoSecreto.Web
         {
             try
             {
-                using(var response = await _httpClient.GetAsync(uri))
+                using (var response = await _httpClient.GetAsync(uri))
                 {
                     if (!response.IsSuccessStatusCode)
-                        return $"Erro ao realizar chamada na API. StatusCode: {(int)response.StatusCode} {response.Headers}";                     
+                        return $"Erro ao realizar chamada na API. StatusCode: {(int)response.StatusCode} {response.Headers}";
 
                     return await response.Content.ReadAsStringAsync();
                 }
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return string.Empty;
@@ -43,8 +43,8 @@ namespace AmigoSecreto.Web
                     return false;
                 else
                     return true; ;
-                
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;

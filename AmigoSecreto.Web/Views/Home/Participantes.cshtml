@@ -1,4 +1,147 @@
 @{
     ViewData["Title"] = "Participantes";
 }
-<h1>Tela que terá a lista com os participantes</h1>
+@section Styles {
+    <link rel="stylesheet" href="css/home/participantes.css" asp-asp-append-version="true">
+}
+
+
+<section class="participantes">
+    <h1 class="text-titulo">
+        Lista de Participantes
+    </h1>
+    <p class="resume">Encontre os nomes dos participantes para a troca de presentes. Clique nos botões de detalhes para
+        descobrir mais sobre cada pessoa e escolher um presente personalizado.</p>
+
+    <table class="table participantes-lista">
+        <thead>
+            <tr class="th">
+                <th>Nome</th>
+                <th class="email">Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="tb">
+                <td class="">
+                    Cayan dos Santos
+                </td>
+                <td class="email">
+                    cayanneves@gmail.com
+                </td>
+                <td class="">
+                    <button class="btn btn-primary">Detalhes</button>
+                </td>
+            </tr>
+            <tr class="tb">
+                <td class="">
+                    João da Silva
+                </td>
+                <td class="email">
+                    joaosilva@gmail.com
+                </td>
+                <td class="">
+                    <button class="btn btn-primary">Detalhes</button>
+                </td>
+            </tr>
+
+            <tr class="tb">
+                <td class="">
+                    Maria Oliveira
+                </td>
+                <td class="email">
+                    maria.oliveira@gmail.com
+                </td>
+                <td class="">
+                    <button class="btn btn-primary">Detalhes</button>
+                </td>
+            </tr>
+
+            <tr class="tb">
+                <td class="">
+                    Pedro Costa
+                </td>
+                <td class="email">
+                    pedro.costa@gmail.com
+                </td>
+                <td class="">
+                    <button class="btn btn-primary">Detalhes</button>
+                </td>
+            </tr>
+
+            <tr class="tb">
+                <td class="">
+                    Ana Santos
+                </td>
+                <td class="email">
+                    ana.santos@gmail.com
+                </td>
+                <td class="">
+                    <button class="btn btn-primary">Detalhes</button>
+                </td>
+            </tr>
+
+            <tr class="tb">
+                <td class="">
+                    Lucas Pereira
+                </td>
+                <td class="email">
+                    lucas.pereira@gmail.com
+                </td>
+                <td class="">
+                    <button class="btn btn-primary">Detalhes</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</section>
+
+
+<section class="modal">
+    <div class="header">
+        <h4>Detalhes</h4>
+        <i class="fa-solid fa-xmark fa-lg" id="closeModal"></i>
+    </div>
+    <div class="body">
+        <div class="profile">
+            <img class="img-profile" src="https://github.com/jvieira562.png" alt="">
+            <div class="profile-resume">
+                <p class="name">José Victor Santos Vieira</p>
+                <a class="link-email" href="mailto:">
+                    <p>contato.josevictorvieira@gmail.com</p>
+                </a>
+                @{
+                    var data = DateTime.UtcNow.ToString().Split(" ");
+                }
+                <p class="since">Desde @data[0]</p>
+            </div>
+        </div>
+        <div class="rede-social">
+            <a href="" style="color: #0a66c2;">
+                <i class="fa-brands fa-linkedin fa-xl"></i>
+                <p>Linkedin</p>
+            </a>
+        </div>
+        <div class="rede-social">
+            <a href="" style="color: #000000;">
+                <i class="fa-brands fa-github fa-xl"></i>
+                <p>GitHub</p>
+            </a>
+        </div>
+        <div class="rede-social">
+            <a href="" style="color: red;">
+                <i class="fa-brands fa-instagram fa-xl"></i>
+                <p>Instagram</p>
+            </a>
+        </div>
+        <div class="rede-social">
+            <a href="" style="color: #0a66c2;">
+                <i class="fa-brands fa-facebook fa-xl"></i>
+                <p>Facebook</p>
+            </a>
+        </div>
+    </div>
+</section>

@@ -20,5 +20,4 @@ public class Par
     }
     public string ToCsv()
         => $"{Id},{Dupla[0].ToCsv()},{Dupla[1].ToCsv()},";
-    
 }

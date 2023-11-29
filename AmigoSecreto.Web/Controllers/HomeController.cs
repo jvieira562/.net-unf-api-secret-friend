@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmigoSecreto.Web.Controllers
 {
@@ -32,7 +33,8 @@ namespace AmigoSecreto.Web.Controllers
             return View(homeModel);
         }
         [HttpGet("amigo-secreto")]
-        public IActionResult AmigoSecreto(){
+        public IActionResult AmigoSecreto()
+        {
             return View();
         }
         [HttpGet("participantes")]
@@ -40,6 +42,7 @@ namespace AmigoSecreto.Web.Controllers
         {
             return View("Participantes");
         }
+        [Authorize]
         [HttpGet("meu-amigo-secreto")]
         public IActionResult Dupla()
         {
@@ -78,14 +81,12 @@ namespace AmigoSecreto.Web.Controllers
             {
                 homeModel.Feedback = FeedbackModel.Create(Tipo.Success, $"{model?.Name} foi cadastrado com sucesso.");
                 return RedirectToAction("Index", homeModel);
-
             }
             else
             {
                 homeModel.Feedback = FeedbackModel.Create(Tipo.Error, $"PX5E - Erro ao registrar {model.Name}. Tente novamente, se o problema persistir, contate um administrador.");
                 return View("Index", homeModel);
             }
-
         }
     }
 }

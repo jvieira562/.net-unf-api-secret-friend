@@ -15,8 +15,7 @@ public class UpdateAmigoViewModel
         Name = name;
         Email = email;
         RegistradoEm = registradoEm;
-    }   
+    }
     public Amigo ToEntity()
         => new Amigo(Id, Name, Email, RegistradoEm);
-    
 }

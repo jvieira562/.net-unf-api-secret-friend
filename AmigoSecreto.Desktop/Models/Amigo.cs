@@ -12,6 +12,5 @@
 
         public string ToString()
             => $"{Id}\t{Name}   {Email}\t{RegistradoEm}";
-        
     }
 }

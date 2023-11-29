@@ -24,7 +24,6 @@ namespace AmigoSecreto.Desktop
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void AmigoSecretoLogin_Load(object sender, EventArgs e)
@@ -48,7 +47,6 @@ namespace AmigoSecreto.Desktop
 
         private void inEmail_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

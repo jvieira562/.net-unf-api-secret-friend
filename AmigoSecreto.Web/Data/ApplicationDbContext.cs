@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 using AmigoSecreto.Web.Models;
 
-
 namespace AmigoSecreto.Web.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -14,10 +14,10 @@ namespace AmigoSecreto.API.Controllers
 
         public AmigoController(IAmigoService amigoService, IParService parService)
         {
-          _service = amigoService;
-          _parService = parService;
+            _service = amigoService;
+            _parService = parService;
         }
-        #endregion
+        #endregion [ Constructors ]
 
         #region [ GET ]
         [HttpGet("/v1/buscar-todos")]
@@ -32,7 +32,7 @@ namespace AmigoSecreto.API.Controllers
         public IActionResult GetAmigoById([FromRoute] string id)
         {
             var amigo = _service.GetById(id);
-            return amigo is not null ? 
+            return amigo is not null ?
             Ok(amigo) : NotFound($"Amigo com identificação {id} não foi encontrado.");
         }
 
@@ -50,7 +50,6 @@ namespace AmigoSecreto.API.Controllers
             {
                 var dupla = _parService.GetById(Guid.Parse(id));
                 return Ok(dupla);
-
             }
             catch
             {
@@ -58,21 +57,21 @@ namespace AmigoSecreto.API.Controllers
             }
         }
 
-        #endregion
+        #endregion [ GET ]
 
         #region [ POST ]
 
         [HttpPost("/v1/registrar")]
         public IActionResult SalvarAmigo([FromBody] CreateAmigoViewModel model)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest("Erro ao criar amigo" + model);
 
             var amigo = new Amigo(model.Name, model.Email);
             var result = _service.Save(amigo);
-            
-            if(!result)
-                return BadRequest("ACS1 - Erro ao salvar registro.");    
+
+            if (!result)
+                return BadRequest("ACS1 - Erro ao salvar registro.");
 
             return Created($"/v1/buscar-amigo/{amigo.Id}", result);
         }
@@ -91,32 +90,32 @@ namespace AmigoSecreto.API.Controllers
             return Ok(result);
         }
 
-        #endregion
+        #endregion [ POST ]
 
         #region [ DELETE ]
         [HttpDelete("/v1/excluir/{id}")]
         public IActionResult Excluir([FromRoute] string id)
-        {            
-            if(id is null)
+        {
+            if (id is null)
                 return BadRequest($"5PX3 - Identificador inválido.");
 
             var idGuid = Guid.Parse(id);
             _service.Delete(idGuid);
             return NoContent();
         }
-        #endregion
+        #endregion [ DELETE ]
 
         #region [ PUT ]
         [HttpPut("/v1/atualizar")]
-        public IActionResult Atualizar([FromBody] UpdateAmigoViewModel amigo) 
+        public IActionResult Atualizar([FromBody] UpdateAmigoViewModel amigo)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest("Os dados enviados são inválidos.");
 
             _service.Update(amigo.ToEntity());
 
             return NoContent();
         }
-        #endregion
+        #endregion [ PUT ]
     }
 }

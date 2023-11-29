@@ -1,86 +1,98 @@
 .meu-amigo {
-  display: flex;
-  align-items: center;
-  font-family: Roboto;
-  gap: 3rem;
-  flex-direction: column;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    gap: 3rem;
+    flex-direction: column;
+    text-align: center;
 }
+
 .cards {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
 }
+
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  border-radius: 25px;
-  width: 250px;
-  height: 300px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 25px;
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.card:hover {
-  margin-bottom: 0.6rem;
-}
+
+    .card:hover {
+        margin-bottom: 0.6rem;
+    }
+
 .foto {
 }
-.foto img {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-}
-.card .summary {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.card .summary .text-email {
-  font-size: 14px;
-  letter-spacing: 0.2px;
-}
-.presente-sugerido {
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  color: var(--action-color);
-  font-weight: 600;
-}
-.card #amigoSecreto {
-  position: absolute;
-  top: -3rem;
-  right: -3rem;
-}
-.card #amigoSecreto img {
-  width: 110px;
-}
-.section-header {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-}
-.section-header p {
-  font-size: 14px;
-  line-height: 1.5rem;
 
+    .foto img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+    }
+
+.card .summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
+
+    .card .summary .text-email {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+    }
+
+.presente-sugerido {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: var(--action-color);
+    font-weight: 600;
+}
+
+.card #amigoSecreto {
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+}
+
+    .card #amigoSecreto img {
+        width: 110px;
+    }
+
+.section-header {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+    .section-header p {
+        font-size: 14px;
+        line-height: 1.5rem;
+    }
 
 @media (max-width: 768px) {
-  .cards {
-    flex-direction: column;
-  }
+    .cards {
+        flex-direction: column;
+    }
 }
-@media (max-width: 550px) { 
-  .section-header  {
-    width: 310px;
-  }
+
+@media (max-width: 550px) {
+    .section-header {
+        width: 310px;
+    }
 }

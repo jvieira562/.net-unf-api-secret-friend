@@ -15,7 +15,7 @@ public class ParService : IParService
         _dao = dao;
         _amigoService = amigoService;
     }
-    #endregion
+    #endregion [ Constructors ]
 
     public bool GerarPares()
     {

@@ -17,7 +17,7 @@ namespace AmigoSecreto.Desktop
         {
             try
             {
-                using(var response = await _httpClient.GetAsync(uri))
+                using (var response = await _httpClient.GetAsync(uri))
                 {
                     if (!response.IsSuccessStatusCode)
                     {
@@ -25,14 +25,14 @@ namespace AmigoSecreto.Desktop
                             .Show(@$"Erro ao realizar chamada na API.
                                      StatusCode: {(int)response.StatusCode}
                                      {response.Headers}");
-                        
+
                         return string.Empty;
                     }
 
                     return await response.Content.ReadAsStringAsync();
                 }
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return string.Empty;
@@ -57,7 +57,8 @@ namespace AmigoSecreto.Desktop
                     MessageBox.Show(@$"Amigo cadastrado com sucesso.");
                     return (int)response.StatusCode;
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return 0;

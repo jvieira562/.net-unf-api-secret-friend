@@ -8,7 +8,7 @@ public class AmigoService : IAmigoService
 {
     private readonly IAmigoDAO _dao;
     public AmigoService(IAmigoDAO dao)
-        =>  _dao = dao;
+        => _dao = dao;
 
     public bool Delete(Guid id)
         => _dao.Delete(id);
@@ -17,16 +17,16 @@ public class AmigoService : IAmigoService
         => _dao.GetAllFromAzureBlobAsync();
 
     public Amigo GetById(string id)
-        =>  _dao.GetById(id);
+        => _dao.GetById(id);
 
     public bool Save(Amigo amigo)
         => _dao.SaveInAzureBlob(amigo);
 
     public bool Update(Amigo amigo)
     {
-        if(!amigo.IsValid())
+        if (!amigo.IsValid())
             return false;
-        
+
         _dao.Update(amigo);
         return true;
     }

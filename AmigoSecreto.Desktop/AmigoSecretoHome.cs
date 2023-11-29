@@ -29,17 +29,15 @@ namespace AmigoSecreto.Desktop
                 listaAmigosView.DataSource = null;
                 listaAmigosView.DataSource = amigos;
                 lblQuantidadeDeCadastrados.Text = amigos.Count().ToString();
-
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("A API está fora do ar. Contate um administrador", "Sistema fora do ar");
             }
-
         }
 
         private void AmigoSecretoHome_Load(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,7 +59,6 @@ namespace AmigoSecreto.Desktop
 
         private void button4_Click(object sender, EventArgs e)
         {
-
         }
 
         private async void btnCadastrar_Click(object sender, EventArgs e)
@@ -92,7 +89,6 @@ namespace AmigoSecreto.Desktop
 
         private void listaAmigosView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void btnBuscarAmigo_Click(object sender, EventArgs e)
@@ -130,7 +126,6 @@ namespace AmigoSecreto.Desktop
                 AtualizarTabela(result);
                 return;
             }
-
             else
                 result = amigos
                     .Where(amg => amg.Name

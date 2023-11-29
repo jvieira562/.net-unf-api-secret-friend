@@ -5,17 +5,18 @@ label {
     letter-spacing: 0.5px;
     gap: 0.2rem;
 }
+
 input {
     border-radius: 5px;
     border: 1px solid var(--action-color);
     padding: 0.3rem;
     min-width: 100%;
 }
+
 .text-danger {
     color: red;
     font-size: 14px;
 }
 
 .container-512 {
-    
 }

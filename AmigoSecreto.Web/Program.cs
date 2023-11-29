@@ -1,7 +1,7 @@
 using AmigoSecreto.Web.Data;
 using AmigoSecreto.Web.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,21 +37,17 @@ app.MapRazorPages();
 
 app.Run();
 
-void ConfigureServices(WebApplicationBuilder builder) 
+void ConfigureServices(WebApplicationBuilder builder)
 {
-    // var connectionString = 
-    //     builder.Configuration
-    //     .GetConnectionString("DefaultConnection") ?? 
-    //     throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
-    var connectionString = 
-        ConfigurationManager.ConnectionStrings["azure-database"].ConnectionString ??
+    var connectionString =
+        builder.Configuration
+        .GetConnectionString("DefaultConnection") ??
         throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(connectionString));
 
-    builder.Services.AddDefaultIdentity<ApplicationUser>(options =>  
+    builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     {
         options.SignIn.RequireConfirmedAccount = true;
     }).AddEntityFrameworkStores<ApplicationDbContext>();

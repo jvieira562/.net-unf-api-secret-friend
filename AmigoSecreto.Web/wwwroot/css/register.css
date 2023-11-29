@@ -4,78 +4,94 @@ html {
     display: flex;
     flex-direction: column;
 }
+
 .content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
 }
+
 .footer {
-    position: relative!important;
+    position: relative !important;
 }
+
 .box-senhas {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
+
 .form-nova-conta {
     display: flex;
     justify-content: center;
 }
+
 #registerForm {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     max-width: 400px;
 }
+
 .messagem-bem-vindo {
     text-align: center;
     font-size: 14px;
 }
+
 #registerForm h1 {
     font-size: 30px;
     text-align: center;
 }
-.box-senhas > div {
 
+.box-senhas > div {
 }
+
 input {
     width: 100%;
-    padding: 0.3rem 0 0.3rem 0;;
+    padding: 0.3rem 0 0.3rem 0;
+    ;
 }
-input::placeholder {
-    padding: 0 0 0 0.3rem;
-}
-input:focus {
-    
-}
+
+    input::placeholder {
+        padding: 0 0 0 0.3rem;
+    }
+
+    input:focus {
+    }
+
 .text-danger {
     color: red;
     font-size: 14px;
 }
+
 .btn-registrar {
     width: 100%;
     align-self: center;
 }
+
 .redesocial {
     display: grid;
-    grid-template-columns: 1fr 2fr; 
+    grid-template-columns: 1fr 2fr;
     align-content: center;
     align-items: center;
     justify-content: center;
     gap: 1rem;
 }
+
 .select-rede {
     display: flex;
     flex-direction: column;
 }
-.select-rede select {
-    padding: 0.3rem 0 0.3rem 0;
-    border-radius: 5px;
-    font-size: 14px;
-    height: 26.59px;
-    border: 1px solid var(--action-color);
-}
-.select-rede select::placeholder {
-    font-size: 14px;
-}
+
+    .select-rede select {
+        padding: 0.3rem 0 0.3rem 0;
+        border-radius: 5px;
+        font-size: 14px;
+        height: 26.59px;
+        border: 1px solid var(--action-color);
+    }
+
+        .select-rede select::placeholder {
+            font-size: 14px;
+        }

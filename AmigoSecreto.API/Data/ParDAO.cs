@@ -24,7 +24,7 @@ public class ParDAO : IParDAO
         _blobContainerClient = _blobServiceClient.GetBlobContainerClient(Configuration.GetBlobContainerName());
     }
 
-    #endregion
+    #endregion [ Constructors ]
 
     #region [Call to local]
     public void GerarPares()
@@ -36,32 +36,31 @@ public class ParDAO : IParDAO
             .Next())
         .ToList();
 
-        for(int i = 0; i < amigos.Count(); i += 2) 
+        for (int i = 0; i < amigos.Count(); i += 2)
         {
             var amigo1 = amigos[i];
             var amigo2 = amigos[i + 1];
             var par = new Par(Guid.NewGuid(), amigo1, amigo2);
             pares.Add(par);
         }
-        try 
+        try
         {
             File.WriteAllText(Configuration.GetAmigoSecretoFilePath(), string.Empty);
-            var sw = new StreamWriter(Configuration.GetAmigoSecretoFilePath(), append : false, Encoding.UTF8);            
-            foreach(var par in pares)
+            var sw = new StreamWriter(Configuration.GetAmigoSecretoFilePath(), append: false, Encoding.UTF8);
+            foreach (var par in pares)
                 sw.WriteLine(par.ToCsv());
 
             sw.Close();
-        } 
+        }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);;
+            Console.WriteLine(ex.Message); ;
         }
-        
     }
-    
+
     public IEnumerable<Par> GetAll()
     {
-        var duplas = new List<Par>();  
+        var duplas = new List<Par>();
 
         try
         {
@@ -84,21 +83,21 @@ public class ParDAO : IParDAO
                      amigo1Split[1],
                       amigo1Split[2],
                        DateTime.Parse(amigo1Split[2]));
-# endregion
-                # region [ Construção Amigo 2]
-                var amigo2Split = linhaSplit[1].Split(";");                
+                #endregion [Call to local]
+                #region [ Construção Amigo 2]
+                var amigo2Split = linhaSplit[1].Split(";");
                 var amigo2 = new Amigo(
                     Guid.Parse(amigo2Split[0]),
                      amigo2Split[1],
                       amigo2Split[2],
                        DateTime.Parse(amigo2Split[2]));
-#endregion
-                
-                duplas.Add(new Par(duplaId, amigo1, amigo2));
+                #endregion [ Construção Amigo 2]
 
+                duplas.Add(new Par(duplaId, amigo1, amigo2));
             } while (!sr.EndOfStream);
             sr.Close();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             Console.WriteLine($"\nErro ao ler aquivo.\n{ex.Message}");
         }
@@ -145,11 +144,11 @@ public class ParDAO : IParDAO
             var newContent = string.Empty;
 
             foreach (var par in pares)
-                newContent = newContent + Environment.NewLine + par.ToCsv();            
+                newContent = newContent + Environment.NewLine + par.ToCsv();
 
-            using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(newContent)))            
+            using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(newContent)))
                 blobClient.Upload(memoryStream, true);
-            
+
             status = true;
             return status;
         }
@@ -214,7 +213,6 @@ public class ParDAO : IParDAO
                         #endregion
 
                         duplas.Add(new Par(duplaId, amigo1, amigo2));
-
                     } while (!sr.EndOfStream);
                     sr.Close();
                 }

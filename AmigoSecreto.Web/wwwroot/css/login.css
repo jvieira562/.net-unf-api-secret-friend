@@ -4,106 +4,126 @@ html {
     display: flex;
     flex-direction: column;
 }
+
 .content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
 }
+
 .footer {
-    position: relative!important;
+    position: relative !important;
 }
+
 .text-danger {
     color: red;
 }
-.form-check-input {
 
+.form-check-input {
 }
+
 .login-btn {
     width: 100%;
 }
+
 .text-sm {
     font-size: 14px;
 }
+
 .text-alert {
     font-size: 12px;
     margin-top: 0.2rem;
 }
+
 .links-rapidos {
     text-align: start;
     width: 100%;
 }
-.links-rapidos p {
-    font-size: 14px;
-}
-.links-rapidos p a{
-    line-height: 4px;
-    color: var(--action-color);
-}
 
-.links-rapidos p a:hover {
-    text-decoration: underline;
-}
-.login  {
+    .links-rapidos p {
+        font-size: 14px;
+    }
+
+        .links-rapidos p a {
+            line-height: 4px;
+            color: var(--action-color);
+        }
+
+            .links-rapidos p a:hover {
+                text-decoration: underline;
+            }
+
+.login {
     display: flex;
     justify-content: center;
     height: 100%;
 }
-.login form {
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
+
+    .login form {
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
 .mensagem-bem-vindo {
     text-align: center;
 }
+
 .box-input {
     display: flex;
     margin-bottom: 0.3rem;
     flex-direction: column;
     width: 100%;
 }
-.box-input label {
-    font-size: 14px;
-    color: var(--black-50);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    gap: 0.2rem;
-}
-.box-input input {
-    border-radius: 5px;
-    border: 1px solid var(--action-color);
-    padding: 0.3rem;
-    min-width: 100%;
-}
-.box-input input::placeholder {
-    color: var(--black-50);
-}
+
+    .box-input label {
+        font-size: 14px;
+        color: var(--black-50);
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        gap: 0.2rem;
+    }
+
+    .box-input input {
+        border-radius: 5px;
+        border: 1px solid var(--action-color);
+        padding: 0.3rem;
+        min-width: 100%;
+    }
+
+        .box-input input::placeholder {
+            color: var(--black-50);
+        }
+
 .checkbox {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.checkbox p {
-    font-size: 14px;
-}
-.checkbox .check {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-.checkbox p a {
-    line-height: 4px;
-    color: var(--action-color);
-}
-.checkbox p a:hover {
-    text-decoration: underline;
-}
+    .checkbox p {
+        font-size: 14px;
+    }
+
+    .checkbox .check {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .checkbox p a {
+        line-height: 4px;
+        color: var(--action-color);
+    }
+
+        .checkbox p a:hover {
+            text-decoration: underline;
+        }
+
 .text-entrar {
     font-size: 30px;
-
 }

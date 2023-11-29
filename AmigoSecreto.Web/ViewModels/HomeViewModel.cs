@@ -24,15 +24,14 @@ public class FeedbackModel
     public string Message { get; set; } = string.Empty;
 
     public static FeedbackModel Create(Tipo tipo, string message)
-        =>  new FeedbackModel
-            {
-                Tipo = tipo,
-                Message = message
-            }; 
-    
+        => new FeedbackModel
+        {
+            Tipo = tipo,
+            Message = message
+        };
+
     public bool IsValid()
         => string.IsNullOrEmpty(Message) ? false : true;
-    
 }
 public enum Tipo
 {
@@ -40,4 +39,3 @@ public enum Tipo
     Success,
     Info
 }
-

@@ -4,12 +4,14 @@ html {
     display: flex;
     flex-direction: column;
 }
+
 .content {
     display: flex;
     height: 100%;
     align-items: start;
     justify-content: center;
 }
+
 .footer {
-    position: relative!important;
+    position: relative !important;
 }

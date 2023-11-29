@@ -1,7 +1,4 @@
-﻿
-
-
-namespace AmigoSecreto.API
+﻿namespace AmigoSecreto.API
 {
     public class Configuration
     {

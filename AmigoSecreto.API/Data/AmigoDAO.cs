@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace AmigoSecreto.API.Data;
 
-public class AmigoDAO : IAmigoDAO 
+public class AmigoDAO : IAmigoDAO
 {
     #region [ Constructors ]
     private readonly string _blobContainerName = Configuration.GetBlobContainerName();
@@ -16,19 +16,18 @@ public class AmigoDAO : IAmigoDAO
     private readonly BlobContainerClient _blobContainerClient;
     private const string fileName = "amigos.csv";
 
-
     public AmigoDAO()
     {
         _blobServiceClient = new BlobServiceClient(Configuration.GetBlobConnectionString());
         _blobContainerClient = _blobServiceClient.GetBlobContainerClient(Configuration.GetBlobContainerName());
     }
 
-    #endregion
+    #endregion [ Constructors ]
 
     #region [ Call archive To Local ]
     public IEnumerable<Amigo> GetAll()
     {
-        var amigos = new List<Amigo>();  
+        var amigos = new List<Amigo>();
 
         try
         {
@@ -40,7 +39,7 @@ public class AmigoDAO : IAmigoDAO
                 linha = sr.ReadLine();
                 linhaSplit = linha.Split(";");
                 amigos.Add(
-                    new Amigo (
+                    new Amigo(
                         Guid.Parse(linhaSplit[0]),
                         linhaSplit[1],
                         linhaSplit[2],
@@ -49,21 +48,23 @@ public class AmigoDAO : IAmigoDAO
                     );
             } while (!sr.EndOfStream);
             sr.Close();
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             Console.WriteLine($"\nErro ao ler aquivo.\n{ex.Message}");
         }
         return amigos;
-    }    
+    }
     public bool Save(Amigo amigo)
     {
         try
         {
-            var sw = new StreamWriter(Configuration.GetAmigoFilePath(), append : true);
+            var sw = new StreamWriter(Configuration.GetAmigoFilePath(), append: true);
             sw.WriteLine(amigo.ToCsv());
             sw.Close();
             return true;
-        } catch(Exception ex)
+        }
+        catch (Exception ex)
         {
             Console.WriteLine("ADSP2 - Erro ao salvar registro.");
             return false;
@@ -85,32 +86,32 @@ public class AmigoDAO : IAmigoDAO
         }
     }
 
-    #endregion
+    #endregion [ Call archive To Local ]
 
     #region [ Dependents Methods ]
-    public bool Delete(Guid id) {
-        
+    public bool Delete(Guid id)
+    {
         var amigos = GetAllFromAzureBlobAsync().ToList();
 
         var amigoSelecionado = amigos.FirstOrDefault(item => item.Id == id);
-        if(amigoSelecionado is null)
+        if (amigoSelecionado is null)
             return false;
 
         amigos.Remove(amigoSelecionado);
         SaveManyInAzureBlobAsync(amigos);
         return true;
     }
-    public void Update(Amigo amigoIn) {
-
+    public void Update(Amigo amigoIn)
+    {
         var amigos = GetAllFromAzureBlobAsync().ToList();
 
         var amigoSelecionado = amigos.FirstOrDefault(item => item.Id == amigoIn.Id);
 
-        if(amigoSelecionado is null)
+        if (amigoSelecionado is null)
             return;
-        
+
         amigoSelecionado.Update(amigoIn);
-        
+
         SaveManyInAzureBlobAsync(amigos);
     }
     public Amigo? GetById(string id)
@@ -121,7 +122,7 @@ public class AmigoDAO : IAmigoDAO
             .ToUpper())
         .FirstOrDefault();
 
-    #endregion
+    #endregion [ Dependents Methods ]
 
     #region [ Call to Azure ]
     public IEnumerable<Amigo> GetAllFromAzureBlobAsync()
@@ -161,7 +162,6 @@ public class AmigoDAO : IAmigoDAO
                         }
                     } while (!sr.EndOfStream);
                 }
-
             }
         }
         catch (Exception ex)
@@ -171,7 +171,7 @@ public class AmigoDAO : IAmigoDAO
 
         return amigos;
     }
-    
+
     public bool SaveInAzureBlob(Amigo amigo)
     {
         try
@@ -194,7 +194,7 @@ public class AmigoDAO : IAmigoDAO
 
             string newContent = currentContent + Environment.NewLine + amigo.ToCsv();
 
-            using(var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(newContent))) 
+            using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(newContent)))
             {
                 blobClient.Upload(memoryStream, true);
             }
@@ -218,7 +218,7 @@ public class AmigoDAO : IAmigoDAO
             string newContent = string.Empty;
 
             foreach (var amigo in amigos)
-                newContent = newContent + Environment.NewLine + amigo.ToCsv();            
+                newContent = newContent + Environment.NewLine + amigo.ToCsv();
 
             using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(newContent)))
             {
@@ -230,5 +230,5 @@ public class AmigoDAO : IAmigoDAO
             Console.WriteLine("ADSP2 - Erro ao salvar registro: " + ex.Message);
         }
     }
-    #endregion
+    #endregion [ Call to Azure ]
 }
